@@ -1,21 +1,28 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
+import { Image } from "expo-image";
 
-export default function TabOneScreen({
-  navigation,
-}: RootTabScreenProps<"TabOne">) {
+const IMAGE_ONE = "https://picsum.photos/id/76/300/300";
+const IMAGE_ONE_PLACEHOLDER = "https://picsum.photos/id/76/50/50";
+
+export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
+      <Text>{IMAGE_ONE}</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Image
+        style={{ width: 300, height: 300 }}
+        source={IMAGE_ONE}
+        placeholder={IMAGE_ONE_PLACEHOLDER}
+        placeholderContentFit="cover"
+        recyclingKey={IMAGE_ONE}
+      />
     </View>
   );
 }
